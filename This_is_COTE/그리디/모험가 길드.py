@@ -1,29 +1,17 @@
 N = int(input())
 mem = list(map(int, input().split()))
-
 mem.sort()
 
-left = 0
-right = 0
+result = 0
 count = 0
 
-#max값 초기화
-max = mem[0]
-while(True):
-    if(max <= right-left+1):
-        count += 1
-        left = right+1
-        right = right+1
-        if(right >= N):
-            break
-        #max 초기화
-        max = mem[left]
-    else:
-        right+=1
-        if(right >= N):
-            break
-        if(max < mem[right]):
-            max = mem[right]
-    
-print(N, mem)
-print(count)
+#이미 정렬 되어있다는거 이용해서
+#max 값 찾는 로직 필요없음. 지금 보는게 제일 높은 공포도
+for i in mem:
+    count+=1
+    #== 여도 문제는 없을 듯
+    if (count >= i):
+        result += 1
+        count = 0
+
+print(result)
